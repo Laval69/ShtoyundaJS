@@ -1,66 +1,55 @@
-/// 6-ая по Роминому 
-let users = [
-  {
-  "index": 0,
-  "isActive": true,
-  "balance": "$2,226.60",
-  "name": "Eugenia Sawyer",
-  "gender": "female",
-  "phone": "+1 (840) 583-3207",
-  "address": "949 John Street, Rose, Puerto Rico, 1857"
-  },
-  {
-  "index": 1,
-  "isActive": true,
-  "balance": "$2,613.77",
-  "name": "Pauline Gallegos",
-  "gender": "female",
-  "phone": "+1 (985) 593-3328",
-  "address": "328 Greenpoint Avenue, Torboy, North Dakota, 6857"
-  },
-  {
-  "index": 2,
-  "isActive": false,
-  "balance": "$3,976.41",
-  "name": "Middleton Chaney",
-  "gender": "male",
-  "phone": "+1 (995) 591-2478",
-  "address": "807 Fleet Walk, Brutus, Arkansas, 9783"
-  },
-  {
-  "index": 3,
-  "isActive": true,
-  "balance": "$1,934.58",
-  "name": "Burns Poole",
-  "gender": "male",
-  "phone": "+1 (885) 559-3422",
-  "address": "730 Seba Avenue, Osage, Alabama, 6290"
-  },
-  {
-  "index": 4,
-  "isActive": true,
-  "balance": "$3,261.65",
-  "name": "Mcfadden Horne",
-  "gender": "male",
-  "phone": "+1 (942) 565-3988",
-  "address": "120 Scholes Street, Kirk, Michigan, 1018"
-  },
-  {
-  "index": 5,
-  "isActive": false,
-  "balance": "$1,790.56",
-  "name": "Suzette Lewis",
-  "gender": "female",
-  "phone": "+1 (837) 586-3283",
-  "address": "314 Dunne Place, Bawcomville, Guam, 9053"
+//ДЗ 7 по Роминому счету
+
+function removeElement(array, item) {
+  const index = array.indexOf(item);
+  if (index !== -1) {
+    array.splice(index, 1);
   }
-  ]
+  return array;
+}
+const array = [1, 2, 3, 4, 5, 6, 7];
+removeElement(array, 5);
+console.log(array);
 
-const phoneNumbers = users
-  .filter(user => parseFloat(user.balance.replace(/[$,]/g, '')) > 2000)
-  .map(user => user.phone);
-console.log("Номера у кого баланс больше 2000 долларов ",phoneNumbers);
 
-const totalBalance = users
-  .reduce((acc, user) => acc + parseFloat(user.balance.replace(/[$,]/g, '')), 0);
-console.log("Сума баланса всех пользователей:", totalBalance.toFixed(2));
+function generateKey(length, characters) {
+  let result = '';
+  const charactersLength = characters.length;
+  for (let i = 0; i < length; i++) {
+    result += characters.charAt(Math.floor(Math.random() * charactersLength));
+  }
+  return result;
+}
+
+const characters = 'abcdefghijklmnopqrstuvwxyz0123456789';
+
+const key = generateKey(16, characters);
+console.log(key);
+
+
+function removeChars(str, charsToRemove) {
+  const charArray = str.split("");
+  
+  const filteredArray = charArray.filter(char => !charsToRemove.includes(char));
+  
+  return filteredArray.join("");
+}
+
+const result = removeChars(" hello world", ['l', 'd']);
+console.log(result);
+
+
+
+function getSum() {
+  let sum = 0;
+  return function(num) {
+    sum += num;
+    return sum;
+  }
+}
+
+const sum = getSum();
+
+console.log(sum(3));
+console.log(sum(5)); 
+console.log(sum(20));
