@@ -1,125 +1,66 @@
-//ДЗ 5 по Роминому подсчету
-
-const arr = [16,-37,54,-4,72,-56,47,4, -16,25,-37,46,4,-51,27,-63,4,-54,76,-4,12,-35,4,47];
-
-let sum = 0;
-let positiveNum = 0;
-
-for (let i = 0; i < arr.length; i++) {
-  if (arr[i] > 0) {
-    positiveNum++;
+/// 6-ая по Роминому 
+let users = [
+  {
+  "index": 0,
+  "isActive": true,
+  "balance": "$2,226.60",
+  "name": "Eugenia Sawyer",
+  "gender": "female",
+  "phone": "+1 (840) 583-3207",
+  "address": "949 John Street, Rose, Puerto Rico, 1857"
+  },
+  {
+  "index": 1,
+  "isActive": true,
+  "balance": "$2,613.77",
+  "name": "Pauline Gallegos",
+  "gender": "female",
+  "phone": "+1 (985) 593-3328",
+  "address": "328 Greenpoint Avenue, Torboy, North Dakota, 6857"
+  },
+  {
+  "index": 2,
+  "isActive": false,
+  "balance": "$3,976.41",
+  "name": "Middleton Chaney",
+  "gender": "male",
+  "phone": "+1 (995) 591-2478",
+  "address": "807 Fleet Walk, Brutus, Arkansas, 9783"
+  },
+  {
+  "index": 3,
+  "isActive": true,
+  "balance": "$1,934.58",
+  "name": "Burns Poole",
+  "gender": "male",
+  "phone": "+1 (885) 559-3422",
+  "address": "730 Seba Avenue, Osage, Alabama, 6290"
+  },
+  {
+  "index": 4,
+  "isActive": true,
+  "balance": "$3,261.65",
+  "name": "Mcfadden Horne",
+  "gender": "male",
+  "phone": "+1 (942) 565-3988",
+  "address": "120 Scholes Street, Kirk, Michigan, 1018"
+  },
+  {
+  "index": 5,
+  "isActive": false,
+  "balance": "$1,790.56",
+  "name": "Suzette Lewis",
+  "gender": "female",
+  "phone": "+1 (837) 586-3283",
+  "address": "314 Dunne Place, Bawcomville, Guam, 9053"
   }
-  sum += arr[i];
-}
-// arr.forEach(function(elem) {  
-//     if(elem > 0){
-//       sum += elem
-//       positiveNum++
-//     }
-//   });
-console.log("Сума елементов массива: " + sum);
-console.log("Позитивные елементы " + positiveNum);
+  ]
 
+const phoneNumbers = users
+  .filter(user => parseFloat(user.balance.replace(/[$,]/g, '')) > 2000)
+  .map(user => user.phone);
+console.log("Номера у кого баланс больше 2000 долларов ",phoneNumbers);
 
-let min = arr[0];
-let minIndex = 0;
-
-for (let i = 1; i < arr.length; i++) {
-  if (arr[i] < min) {
-    min = arr[i];
-    minIndex = i;
-  }
-}
-
-console.log(`Минимальный елемент: ${min}`);
-console.log(`Порядковый номер елемента: ${minIndex}`);
-
-let max = arr[0];
-let maxIndex = 0;
-
-for (let i = 1; i < arr.length; i++) {
-  if (arr[i] > max) {
-    max = arr[i];
-    maxIndex = i;
-  }
-}
-
-console.log(`Максимальный елемент: ${max}`);
-console.log(`Порядковый номер елемента: ${maxIndex}`);
-
-
-let negative = 0;
-
-for (let i = 0; i < arr.length; i++) {
-  if (arr[i] < 0) {
-    negative++;
-  }
-}
-
-console.log(`Количество негативних елементов: ${negative}`);
-
-
-let numOdd = 0;
-
-for (let i = 0; i < arr.length; i++) {
-  if (arr[i] > 0 && arr[i] % 2 !== 0) {
-    numOdd++;
-  }
-}
-
-console.log(`Количество непарних позитивних елементов: ${numOdd}`);
-
-let numEven = 0;
-
-for (let i = 0; i < arr.length; i++) {
-  if (arr[i] > 0 && arr[i] % 2 === 0) {
-    numEven++;
-  }
-}
-
-console.log(`Количество парних позитивних елементов: ${numEven}`);
-
-
-
-let sumEven = 0;
-
-for (let i = 0; i < arr.length; i++) {
-  if (arr[i] > 0 && arr[i] % 2 === 0) {
-    sumEven += arr[i];
-  }
-}
-
-console.log(`Сума парних позитивних елементов: ${sumEven}`);
-
-
-
-let sumOdd = 0;
-
-for (let i = 0; i < arr.length; i++) {
-  if (arr[i] > 0 && arr[i] % 2 !== 0) {
-    sumOdd += arr[i];
-  }
-}
-
-console.log(`Сума непарних позитивних елементів: ${sumOdd}`);
-
-let product = 1;
-
-for (let i = 0; i < arr.length; i++) {
-  if (arr[i] > 0) {
-    product *= arr[i];
-  }
-}
-
-console.log(`Произведение позитивних елементов: ${product}`);
-
-
-const newArr = arr.map(elem => {
-
-  if (elem !== max) {
-      return 0;
-  } else {
-      return elem;
-  }
-});
-console.log(`Обновленный массив ${newArr}`);
+const totalBalance = users
+  .reduce((acc, user) => acc + parseFloat(user.balance.replace(/[$,]/g, '')), 0);
+console.log("Сума баланса всех пользователей:", totalBalance.toFixed(2));
