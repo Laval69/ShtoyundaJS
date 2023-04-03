@@ -1,63 +1,71 @@
-let NumOne = prompt("Введите первое число");
-let NumTwo = prompt("Введите второе число");
-let NumThree;
-let NumFour;
-let result;
+let str = "";
 
-if(NumOne === '' ){
-  NumOne = 0;
+for (let i = 10; i <= 20; i++) {
+  str += i;
+  if (i < 20) {
+    str += ", ";
+  }
 }
-if (NumTwo === '') {
-  NumTwo = 22;
-}
+console.log(str);
 
-alert(`Число Один ${NumOne}`);
-alert(`Число Два ${NumTwo}`);
-
-if( NumOne & NumTwo == true){
-  NumThree = 80;
+let kva = "";
+for (let i = 10; i <= 20; i++) {
+  kva += i * i;
+  if (i < 20) {
+    kva += ", ";
+  }
 }
-else { 
-  NumThree = 40;
-};
-alert(`Число Три ${NumThree}`);
+console.log(kva);
 
-if(NumOne <= 90 ){
-}
 
-let obj = {
-  size: 'medium',
-}
-if(NumOne >= 90 )
-{
-  obj.size = 'big';
-}
-else if(NumOne <= 40){
-  obj.size = 'small';
-}
+let proiz = 1;
 
-alert(`Размер первого числа имеет значение ${obj.size}`);
-
-switch(obj.size){
-  case 'big':
-    NumFour = 1000;
-    break;
-  case 'medium':
-    NumFour = 100;
-    break;
-  case 'small':
-    NumFour = 10;
-    break;
+for (let i = 15; i <= 35; i++) {
+  proiz  *= i;
 }
-alert(`Число четыри ${NumFour}`);
+console.log(proiz);
 
-result = NumOne * NumTwo * NumThree * NumFour
 
-if (result % 2 === 0){
-  console.log(result,"XD");
+let sum = 0;
+
+for (let i = 1; i <= 500; i++) {
+  sum += i;
 }
-else{
-  NumTwo > 50
-  alert(`Число два больше 50 и равно ${NumTwo}`)
+const aref = sum / 500;
+console.log(aref);
+
+let suma = 0;
+
+for (let i = 30; i <= 80; i++) {
+  if (i % 2 === 0) {
+    suma += i;
+  }
+}
+console.log(suma);
+
+for (let i = 100; i <= 200; i++) {
+  if (i % 3 === 0) {
+    console.log(i);
+  }
 }
 
+const num = prompt('Введите число'); // замените на любое целое число для проверки
+
+if (num < 2) {
+  alert(`${num} - составное число`);
+} else {
+  let isPrime = true;
+  
+  for (let i = 2; i < num; i++) {
+    if (num % i === 0) {
+      isPrime = false;
+      break;
+    }
+  }
+  
+  if (isPrime) {
+    alert(`${num} - простое число`);
+  } else {
+    alert(`${num} - составное число`);
+  }
+}
